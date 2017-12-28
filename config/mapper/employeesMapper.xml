@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mzk.dao.EmployeesDao">
+	<insert id="addEmp" parameterType="Employees">
+		insert into employees 
+			(LASTNAME,EMAIL,BIRTH,CREATETIME,DEPT) 
+		values
+			(#{lastName},#{email},#{birth},#{createTime},#{dept})
+	</insert>
+	<select id="queryAllEmployees" resultType="Employees">
+		select *from employees
+	</select>
+	<delete id="delEmp" parameterType="int">
+		delete from employees where ID=#{id}
+	</delete>
+	<select id="queryEmpById" parameterType="int">
+		select *from employees where ID=#{id}
+	</select>
+	<update id="updateEmp" parameterType="Employees">
+		update employees set LASTNAME=#{lastName},EMAIL=#{email},BIRTH=#{birth},DEPT=#{dept} where ID=#{id}
+	</update>
+
+</mapper>
